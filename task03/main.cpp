@@ -1,19 +1,36 @@
 #include "logic.h"
-#include "util.h"
 
 int main() {
-	srand(time(0));
+    int size;
+    int minVal;
+    int maxVal;
+    cout << "input size of array: ";
+    cin >> size;
+    cout << "input range of elements: ";
+    cin >> minVal >> maxVal;
 
 
+    int* array = new int[size];
 
-	int* array = new int[] {12, 4, 5, 7, 15, 4, 10, 17, 23, 7};
+
+    initialize_array(array, size, minVal, maxVal);
+
+    cout << "Array: ";
+    string msg = "";
+    for (int i = 0; i < size; i++)
+    {
+        msg += to_string(array[i]) + " ";
+    }
+    cout << msg;
 
 
-	for (int i = 0; i < 10; i++) {
-		cout << *(array + i) << " ";
-	}
+    int minIndex = find_min_index(array, size);
+    int maxIndex = find_max_index(array, size);
+    cout << "min index: " << minIndex << endl << "max index:" << maxIndex << endl;
 
-	cout << "\n\n" << "Avg of non-extreme elements: " << get_avg_of_non_extreme_elems(array, /*size*/10);
-	delete[] array;
-	return 0;
+    double arithmetic_mean = calculate_arithmetic_mean(array, size);
+    cout << "arithmetic mean: " << arithmetic_mean;
+    delete[] array;
+
+    return 0;
 }

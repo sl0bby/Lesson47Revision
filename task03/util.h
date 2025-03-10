@@ -1,1 +1,0 @@
-void init_random(int* vector, int size, int a, int b);

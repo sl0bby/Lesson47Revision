@@ -1,5 +1,13 @@
 #include <iostream>
 #include <string>
-#include <ctime>
 using namespace std;
-double get_avg_of_non_extreme_elems(int* array, int size);
+
+void initialize_array(int* array, int size, int minVal, int maxVal);
+
+int calculate_sum_of_nonExtremal_elements(int* array, int size);
+
+int find_min_index(int* array, int size);
+
+int find_max_index(int* array, int size);
+
+double calculate_arithmetic_mean(int* array, int size);

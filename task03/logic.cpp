@@ -1,46 +1,51 @@
+#include "logic.h"
 
-int findMinIndex(int* array, int size) {
-	int minIndex = array[0];
+void initialize_array(int* array, int size, int minVal, int maxVal) {
+    for (int i = 0; i < size; i++) {
+        int num;
+        num = rand() % (maxVal - minVal + 1);
 
-	for (int i = 0; i < size; i++)
-	{
-		if (array[i] < minIndex) {
-			minIndex = array[i];
-		}
-	}
-	return minIndex;
+        array[i] = num;
+    }
 }
 
-int findMaxIndex(int* array, int size) {
-	int maxIndex = 0;
-
-	for (int i = 0; i < size; i++)
-	{
-		if (array[i] > maxIndex) {
-			maxIndex = array[i];
-		}
-	}
-	return maxIndex;
+int find_min_index(int* array, int size) {
+    int minIndex = array[0];
+    for (int i = 1; i < size; i++) {
+        if (array[i] < minIndex) {
+            minIndex = array[i];
+        }
+    }
+    return minIndex;
 }
 
+int find_max_index(int* array, int size) {
+    int maxIndex = array[0];
+    for (int i = 1; i < size; i++) {
+        if (array[i] > maxIndex) {
+            maxIndex = array[i];
+        }
+    }
+    return maxIndex;
+}
 
+int calculate_sum_of_nonExtremal_elements(int* array, int size) {
+    int sum = 0;
+    int minIndex = find_min_index(array, size);
+    int maxIndex = find_max_index(array, size);
+    for (int i = 0; i < size; i++)
+    {
+        if (array[i] != minIndex || array[i] != maxIndex)
+        {
+            sum += array[i];
+        }
 
+    }
+    return sum;
+}
 
-double get_avg_of_non_extreme_elems(int* array, int size) {
-	int max = findMaxIndex(array, size);
-	int min = findMinIndex(array, size);
-
-	int extremes = 0;
-	double sum = 0;
-
-	for (int i = 0; i < size; i++)
-	{
-		if (array[i] == max || array[i] == min) {
-			extremes++;
-			continue;
-		}
-		sum += array[i];
-	}
-
-	return sum / (size - extremes);
+double calculate_arithmetic_mean(int* array, int size) {
+    double sum = calculate_sum_of_nonExtremal_elements(array, size);
+    int count = size - 2;
+    return sum / count;
 }
