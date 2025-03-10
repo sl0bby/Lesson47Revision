@@ -22,10 +22,11 @@ int main() {
         msg += to_string(array[i]) + " ";
     }
     cout << msg;
-    int sum = find_sum(array, size);
-    cout << "sum of elements between extreme elements: " << sum;
 
-    cout << endl;
+
+    int minIndex = find_local_min(array, size);
+    int maxIndex = find_local_max(array, size);
+    cout << "count of min index: " << minIndex << endl << "count of max index:" << maxIndex << endl;
 
 
     delete[] array;

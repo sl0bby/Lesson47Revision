@@ -1,6 +1,6 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
-int findMinIndex(int* array, int size);
-int findMaxIndex(int* array, int size);
-int findSum(int* array, int size);
+int find_sum(int* array, int size);
+void initialize_array(int* array, int size, int minVal, int maxVal);
